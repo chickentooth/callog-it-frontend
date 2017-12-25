@@ -4,14 +4,17 @@
             <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
                 <!-- Login Block -->
                 <div class="block block-themed animated fadeIn">
-                    <i v-show="loggingIn" class="fa fa-4x fa-asterisk fa-spin text-success"></i>
                     <div class="block-header bg-primary">
                         <ul class="block-options">
                             <li>
-                                <a href="base_pages_reminder.html">Forgot Password?</a>
+                                <i v-show="loggingIn" class="fa fa-2x fa-asterisk fa-spin text-flat-lighter"></i>
                             </li>
                             <li>
-                                <a href="base_pages_register.html" data-toggle="tooltip" data-placement="left" title="" data-original-title="New Account"><i class="si si-plus"></i></a>
+                                <a href="#">Forgot Password?</a>
+                            </li>
+                            
+                            <li>
+                                <a href="#" data-toggle="tooltip" data-placement="left" title="" data-original-title="New Account"><i class="si si-plus"></i></a>
                             </li>
                         </ul>
                         <h3 class="block-title">Login</h3>
@@ -66,6 +69,7 @@
 
 <script>
     import utils from '../../utils'
+
     export default {
         name: 'Login',
         data: function () {
@@ -77,6 +81,11 @@
               loggingIn: false,
               error: ''
           }
+        },
+        mounted: function () {
+            let loginPageScript = document.createElement('script')
+            loginPageScript.setAttribute('src', '/static/js/pages/base_pages_login.js')
+            document.head.appendChild(loginPageScript)
         },
         methods: {
             submit () {

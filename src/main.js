@@ -4,12 +4,17 @@ import Vue from 'vue'
 import App from './components/App.vue'
 import router from './router'
 import store from './store'
-import jquery from 'jquery'
 import config from './config/index'
 import VueResource from 'vue-resource'
+import SweetAlert from 'vue-sweetalert'
 
+import datePicker from 'vue-bootstrap-datetimepicker';
+// Import date picker css
+import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
 
+Vue.use(datePicker)
 Vue.use(VueResource)
+Vue.use(SweetAlert)
 Vue.http.options.root = config.restServerAddress
 Vue.config.productionTip = false
 

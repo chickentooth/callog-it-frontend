@@ -8,6 +8,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+const jquery = require('jquery')
+const moment = require('moment')
+
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -50,6 +53,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+      new webpack.ProvidePlugin({
+          Vue: ['vue/dist/vue.esm.js', 'default'],
+          jQuery: 'jquery',
+          'window.jQuery': 'jquery',
+          $: 'jquery',
+          moment: 'moment',
+      }),
   ]
 })
 
