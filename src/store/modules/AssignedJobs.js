@@ -12,32 +12,29 @@ const state = {
     data: []
 }
 const actions = {
-    async fetchAllmyCreatedJobs ({commit}) {
-        commit('FETCH_ALL_MY_CREATED_JOB')
+    async fetchAllAssignedJobs ({commit}) {
+        commit('FETCH_ALL_ASSIGNED_JOB')
         try {
-            let data = await Vue.http.get('auth/records.json').then(respone => respone.body.data)
-            commit('FETCH_ALL_MY_CREATED_JOB_SUCCESS', data)
+            let data = await Vue.http.get('auth/records/assigned-to-me.json').then(respone => respone.body.data)
+            commit('FETCH_ALL_ASSIGNED_JOB_SUCCESS', data)
 
         } catch (error) {
-            commit('FETCH_ALL_MY_CREATED_JOB_FAILURE', error)
+            commit('FETCH_ALL_ASSIGNED_JOB_FAILURE', error)
         }
     }
 }
-const getters = {
-    allCreatedJobs: state => state.data
-}
 
 const mutations = {
-    FETCH_ALL_MY_CREATED_JOB (state) {
+    FETCH_ALL_ASSIGNED_JOB (state) {
         state.loading = true
     },
-    FETCH_ALL_MY_CREATED_JOB_SUCCESS (state, data) {
+    FETCH_ALL_ASSIGNED_JOB_SUCCESS (state, data) {
         state.loading = false
         state.active = true
         state.success = true
         state.data = data
     },
-    FETCH_ALL_MY_CREATED_JOB_FAILURE (state, error) {
+    FETCH_ALL_ASSIGNED_JOB_FAILURE (state, error) {
         state.loading = false
         state.success = false
         state.active = true
@@ -48,6 +45,5 @@ const mutations = {
 export default {
     state,
     actions,
-    mutations,
-    getters
+    mutations
 }

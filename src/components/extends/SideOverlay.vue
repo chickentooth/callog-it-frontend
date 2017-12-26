@@ -88,14 +88,14 @@
                                     <ul class="nav-users remove-margin-b">
                                         <li>
                                             <a href="base_pages_profile.html">
-                                                <img class="img-avatar" src="/src/img/avatars/avatar2.jpg" alt="">
+                                                <img class="img-avatar" src="/static/img/avatars/avatar2.jpg" alt="">
                                                 <i class="fa fa-circle text-success"></i> Susan Elliott
                                                 <div class="font-w400 text-muted"><small>Copywriter</small></div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="base_pages_profile.html">
-                                                <img class="img-avatar" src="/src/assets/img/avatars/avatar13.jpg" alt="">
+                                                <img class="img-avatar" src="/static/assets/img/avatars/avatar13.jpg" alt="">
                                                 <i class="fa fa-circle text-success"></i> Eric Lawson
                                                 <div class="font-w400 text-muted"><small>Web Developer</small></div>
                                             </a>

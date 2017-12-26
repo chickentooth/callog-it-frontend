@@ -11,7 +11,9 @@ import SweetAlert from 'vue-sweetalert'
 import datePicker from 'vue-bootstrap-datetimepicker';
 // Import date picker css
 import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
+import VeeValidate from 'vee-validate'
 
+Vue.use(VeeValidate)
 Vue.use(datePicker)
 Vue.use(VueResource)
 Vue.use(SweetAlert)

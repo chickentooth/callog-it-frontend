@@ -1,7 +1,7 @@
 <template>
     <div class="block">
         <div class="block-header">
-            <h3 class="block-title">Tất cả YÊU CẦU CỦA TÔI</h3>
+            <h3 class="block-title"></h3>
         </div>
         <div class="block-content">
             <!-- DataTables init on table by adding .js-dataTable-simple class, functionality initialized in js/pages/base_tables_datatables.js -->
@@ -103,17 +103,38 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapState } from 'vuex'
     import moment from 'moment'
     export default {
-        name: 'CreatedJobAll',
+        name: 'AssignedJobs',
         created: function () {
-            this.$store.dispatch('fetchAllmyCreatedJobs')
+            this.$store.dispatch('fetchAllAssignedJobs')
         },
         computed: {
-            ...mapGetters({
-                jobs: 'allCreatedJobs'
-            })
+            ...mapState({
+                AssignedJob: state => state.AssignedJobs
+            }),
+            jobs() {
+                let filter = this.$route.params.filter
+                let jobs = this.AssignedJob.data
+
+                switch (filter) {
+                    case 'all':
+                        return jobs
+                        break
+                    case 'new' : return jobs.filter(job => job.status === 0)
+                        break
+                    case 'inprogress':
+                        return jobs.filter(job => job.status === 1)
+                        break
+                    case 'resolved':
+                        return jobs.filter(job => job.status === 2)
+                        break
+                    case 'out-of-date':
+                        return jobs.filter(job => job.deadline.getTime() < new Date().getTime())
+                        break
+                }
+            }
         },
         methods: {
             getPriority(job){
@@ -145,6 +166,7 @@
             getTime(job){
                 return moment(job.deathline).locale('vi').format('MMMM Do YYYY, h:mm:ss')
             }
+
         }
     }
 

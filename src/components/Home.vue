@@ -1,7 +1,7 @@
 <template>
     <div id="page-container" v-bind:class="pageContainerClass">
         <side-overlay v-if="isLoggedIn"></side-overlay>
-        <sidebar v-if="isLoggedIn"></sidebar>
+        <nav-bar v-if="isLoggedIn"></nav-bar>
         <app-header v-if="isLoggedIn"></app-header>
         <main id="main-container" style="min-height: 924px;">
             <router-view></router-view>
@@ -13,9 +13,9 @@
 <script>
     import appHeader from './extends/Header.vue'
     import appFooter from './extends/Footer.vue'
-    import sidebar from './extends/Sidebar.vue'
     import appModal from "./extends/AppModal.vue";
     import sideOverlay from './extends/SideOverlay.vue'
+    import navBar from './extends/Navbar.vue'
 
     import store from '../store'
 
@@ -29,8 +29,8 @@
         components: {
             appHeader,
             appFooter,
-            sidebar,
             appModal,
+            navBar,
             sideOverlay
         },
         computed: {
